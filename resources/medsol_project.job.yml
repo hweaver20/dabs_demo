@@ -2,7 +2,7 @@
 resources:
   jobs:
     my_project_job:
-      name: my_project_job
+      name: medsol_job
 
       trigger:
         # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
