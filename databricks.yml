@@ -10,9 +10,11 @@ include:
 variables:
   git_branch: 
     default: ${bundle.git.branch} # Assuming GIT_BRANCH is set in your CI/CD
+  source_1_schema:
+    default: 'dev'
 
 targets:
-  dev:
+  feature:
     # The default target uses 'mode: development' to create a development copy.
     # - Deployed resources get prefixed with '[dev my_user_name]'
     # - Any job schedules and triggers are paused by default.
@@ -21,8 +23,11 @@ targets:
     default: true
     workspace:
       host: https://e2-demo-field-eng.cloud.databricks.com/
+    variables:
+      source_1_schema:
+        default: 'dev'
 
-  prod:
+  collaboration:
     mode: production
     workspace:
       host: https://e2-demo-field-eng.cloud.databricks.com/
@@ -31,3 +36,7 @@ targets:
     permissions:
       - user_name: haley.weaver@databricks.com
         level: CAN_MANAGE
+    variables:
+      source_1_schema:
+        default: 'dev'
+      
