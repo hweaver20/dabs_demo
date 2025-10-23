@@ -1,0 +1,36 @@
+# This is a Databricks asset bundle definition for my_project.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: my_project_b
+  uuid: 43006dc4-9e85-4fa0-870d-17862630e704
+
+include:
+  - resources/*.yml
+
+variables:
+  git_branch: 
+    default: ${bundle.git.branch} 
+  source_a:
+    default: 'dev'
+
+targets:
+  dev:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    default: true
+    workspace:
+      host: https://e2-demo-field-eng.cloud.databricks.com/
+      root_path: /Workspace/Users/${workspace.current_user.userName}/${bundle.name}/${bundle.git.branch}
+
+  prod:
+    mode: production
+    workspace:
+      host: https://e2-demo-field-eng.cloud.databricks.com/
+      # We explicitly deploy to /Workspace/Users/mike@neuralift.ai to make sure we only have a single copy.
+      root_path: /Workspace/Users/haley.weaver@databricks.com/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: haley.weaver@databricks.com
+        level: CAN_MANAGE

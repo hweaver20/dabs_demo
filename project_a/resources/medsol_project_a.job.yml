@@ -18,7 +18,9 @@ resources:
         - task_key: notebook_task
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/notebook.ipynb
+            notebook_path: /../../shared/notebook.ipynb
+            base_parameters:
+              source_a: var.source_a
 
         - task_key: refresh_pipeline
           depends_on:

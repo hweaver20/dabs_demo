@@ -1,15 +1,23 @@
 # This is a Databricks asset bundle definition for my_project.
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
-  name: my_project
+  name: my_project_a
   uuid: 43006dc4-9e85-4fa0-870d-17862630e704
+
+sync:
+  paths:
+    - "../shared"
+    - "./src"
 
 include:
   - resources/*.yml
+  - ../shared/*.yml
 
 variables:
   git_branch: 
     default: ${bundle.git.branch} 
+  source_a:
+    default: 'dev'
 
 targets:
   dev:
