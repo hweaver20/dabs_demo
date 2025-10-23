@@ -8,7 +8,7 @@ resources:
       schema: my_project_${bundle.target}
       libraries:
         - notebook:
-            path: /../../shared/dlt_pipeline.ipynb
+            path: ../../shared/dlt_pipeline.ipynb
 
       configuration:
         bundle.sourcePath: ${workspace.file_path}/src
