@@ -4,8 +4,15 @@ bundle:
   name: my_project_b
   uuid: 43006dc4-9e85-4fa0-870d-17862630e704
 
+sync:
+  paths:
+    - "../shared"
+    - "./src"
+
 include:
   - resources/*.yml
+  - ../shared/*.yml
+
 
 variables:
   git_branch: 
