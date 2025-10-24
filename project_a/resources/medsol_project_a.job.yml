@@ -20,7 +20,7 @@ resources:
           notebook_task:
             notebook_path: ../../shared/notebook.ipynb
             base_parameters:
-              source_a: "{{var.source_a}}"
+              source_a: "${var.source_a}"
 
         - task_key: refresh_pipeline
           depends_on:
