@@ -2,7 +2,7 @@
 resources:
   pipelines:
     my_project_pipeline:
-      name: ${bundle.name}-${var.git_branch}-medsol_pipeline
+      name: ${bundle.name}-${var.git_branch}-pipeline
       ## Specify the 'catalog' field to configure this pipeline to make use of Unity Catalog:
       # catalog: catalog_name
       schema: my_project_${bundle.target}
